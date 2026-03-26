@@ -1,5 +1,6 @@
-uvicorn
 pyinstaller
-google-genai
-subprocces
 python-dotenv
+
+langchain
+langchain-groq
+langchain-google-genai
