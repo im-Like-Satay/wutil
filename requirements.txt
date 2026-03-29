@@ -1,9 +1,3 @@
-pyinstaller
+google-genai
 python-dotenv
-setuptools
-
-langchain
-langchain-groq
-langchain-google-genai
-langchain-anthropic
-langchain-openai
+pyinstaller
