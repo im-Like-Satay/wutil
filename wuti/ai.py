@@ -8,20 +8,22 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 
-def call_ai(inputData: str | None = None) -> str:
+def call_ai(inputData: str | None = None):
+    try:
+        # print("[INFO] ai running at `ai.py'")
+        if inputData is None:
+            return "[WARNING] function 'callAi` no contained input"
 
-    if inputData is None:
-        return "[WARNING] function 'callAi` no contained input"
+        client = genai.Client(api_key=GEMINI_API_KEY)
 
-    client = genai.Client(api_key=GEMINI_API_KEY)
-
-    response = client.models.generate_content(
-        model="gemini-2.5-flash-lite",
-        contents=str(inputData),
-        config=types.GenerateContentConfig(system_instruction=SYSTEM_MESSAGE),
-    )
-
-    return str(response.text)
+        response = client.models.generate_content(
+            model="gemini-2.5-flash-lite",
+            contents=str(inputData),
+            config=types.GenerateContentConfig(system_instruction=SYSTEM_MESSAGE),
+        )
+        return str(response.text)
+    except Exception as e:
+        print(e)
 
 
 SYSTEM_MESSAGE = """
@@ -41,4 +43,4 @@ SYSTEM_MESSAGE = """
 
 
 if __name__ == "__main__":
-    print(call_ai())
+    call_ai()

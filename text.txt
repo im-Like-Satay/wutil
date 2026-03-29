@@ -1,0 +1,1 @@
+(?s)(?P<traceback>Traceback \(most recent call last\):.*?)?(?P<error_type>[A-Z][a-zA-Z0-9_]*(?:Error|Exception|Warning|Exit|Interrupt|Stop|NotFound|Failure))\s*:\s*(?P<error_msg>.*)$

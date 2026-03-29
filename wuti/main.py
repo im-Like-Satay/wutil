@@ -1,15 +1,14 @@
 from wuti.ai import call_ai
-from wuti.parser import parse_log
+from wuti.run_wsi import run_wsi
 
 
 def main():
     try:
-        error = parse_log()
-        if error is None:
-            return
-        result = call_ai(error)
+        error = run_wsi()
+        if error:
+            result = call_ai(error)
+            print(result)
 
-        print(result)
     except Exception as e:
         print(e)
     except KeyboardInterrupt:

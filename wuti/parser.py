@@ -7,9 +7,10 @@ def parse_log():
     """fungsi ini untuk memparse log menggunakan regex"""
 
     logData = str(run_wsi())
-    regexPattern = r"(?:.*?(?P<error_type>[A-Z][a-zA-Z0-9_]*(?:Error|Exception|Warning|Exit|Interrupt|Stop|NotFound|Failure))\s*:\s*(?P<error_msg>.*))$"
+    regexPattern = r"(?s)(?P<traceback>Traceback \(most recent call last\):.*?)?(?P<error_type>[A-Z][a-zA-Z0-9_]*(?:Error|Exception|Warning|Exit|Interrupt|Stop|NotFound|Failure))\s*:\s*(?P<error_msg>.*)$"
 
     try:
+        # print("[INFO] parsering at `parser.py'")
         resultParserLog = re.findall(
             regexPattern, logData, re.IGNORECASE | re.MULTILINE
         )
